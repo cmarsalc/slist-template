@@ -58,18 +58,18 @@ If the list have to be passed to other functions it has to be passed
 as a pointer to `SLIST_NODE(T)` as it is just a pointer to the head of
 the list. Something like this:
 
-    ```
-    void print_list(SLIST_NODE(uint32_t)* list)
-    {
-        printf("---\n");
-        SLIST_FOR_EACH_NODE_PTR(uint32_t, list, node)
-        {
-            printf("%d\n", node->data);
-        }
-    }
+ ```C
+ void print_list(SLIST_NODE(uint32_t)* list)
+ {
+     printf("---\n");
+     SLIST_FOR_EACH_NODE_PTR(uint32_t, list, node)
+     {
+         printf("%d\n", node->data);
+     }
+ }
 
-    print_list(uint32List);
-    ```
+ print_list(uint32List);
+ ```
 
 (*) An alternative implementation could be provided where there was
 no need for definition, expanding macro calls directly in client code
