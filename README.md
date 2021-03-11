@@ -22,7 +22,7 @@ by declaring a variable of type SLIST_NODE(T), where T is the target type:
 Content of the node can be manipulated directly through the `data` field of
 the node:
 
-    `nodeContainingT.data = dataOfTypeUint32;`
+    `nodeContainingUint32.data = dataOfTypeUint32;`
 
 To add a node to a list, first a list have to be created:
 
@@ -30,7 +30,7 @@ To add a node to a list, first a list have to be created:
 
 Then, it's just a matter of calling the right macro:
 
-    `SLIST_ADD_NODE(uint32_t, uint32List, dataOfTypeUint32);`
+    `SLIST_ADD_NODE(uint32_t, uint32List, nodeContainingUint32);`
 
 Due to using the client memory a node cannot be repeated on the list
 as the list will be corrupted (becoming infinitely circular), so calling
@@ -39,7 +39,7 @@ again `SLIST_ADD_ADD_NODE(uint32_t, dataOfTypeUint32)` has no effect.
 If a node value has to be repeated a new node has to be provided by the
 client with the same value, like:
 
-    `SLIST_ADD_NODE(uint32_t, uint32List, anotherDataOfTypeUint32WithTheSameValue);`
+    `SLIST_ADD_NODE(uint32_t, uint32List, anotherNodeWithTheSameValue);`
 
 Finally, to traverse the list a for each like macro can be used:
 
