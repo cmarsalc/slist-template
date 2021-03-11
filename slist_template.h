@@ -1,9 +1,13 @@
 /*************************************************************************//**
+ * @copyright COPYRIGHT (C) 2021 IDNEO S.A.U.
+ *
  * @file slist_template.h
  * @date 2021-03-11
  * @author Carles Marsal
  *
  * Language C99
+ *
+ * @version $Id$
  *
  * @addtogroup Collections
  * @{
@@ -147,7 +151,7 @@ static SLIST_DEFINE_ADD_NODE_FUNC(T)
  * 	SLIST_NODE(T) node; 			// declares a node<T>
  * 	node.data = data;				// assigns data to node<T>
  * 	SLIST_ADD_NODE(T, node)			// adds node<T> to list without repetition
- * 	SLIST_FOR_EACH_NODE_PTR(T, node)
+ * 	SLIST_FOR_EACH_NODE_PTR(T, list, node)
  * 	{
  * 		node->data
  * 	}
@@ -161,6 +165,9 @@ struct sSLIST_##T##_Node
 
 #define SLIST_ADD_NODE(T, head_, node_) \
 SLIST_add_##T(&(head_), &(node_))
+
+#define SLIST_ADD_NODE_PTR(T, head_, node_) \
+SLIST_add_##T(&(head_), (node_))
 
 #define SLIST_FOR_EACH_NODE_PTR(T, head_, node_) \
 for (SLIST_NODE(T)* (node_) = (head_); (node_) != NULL ; (node_) = (node_)->next) \
